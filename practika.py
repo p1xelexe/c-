@@ -1,17 +1,16 @@
-def newton_raphson(x0, f, df, epsilon):
-    x = x0
-    while abs(f(x)) > epsilon:
-        x = x - f(x) / df(x)
-    return x
-
 def f(x):
     return x**4 + 3*x - 5
 
-def df(x):
-    return 4*x**3 + 3
+def binary_search(a, b):
+    while abs(b - a) > 0.0001:
+        mid = (a + b) / 2
+        if f(mid) > 0:
+            b = mid
+        else:
+            a = mid
+    return (a + b) / 2
 
-x0 = 1.0
-epsilon = 0.0001
-
-x = newton_raphson(x0, f, df, epsilon)
-print("The solution is:", x)
+a = 0
+b = 100
+x = binary_search(a, b)
+print(x)#решение
